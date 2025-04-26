@@ -1,0 +1,45 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://58.16.204.92:64000/work-study_richer
+    username: root
+    password: Atri-Sakura
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initialSize: 5
+      minIdle: 5
+      maxActive: 20
+      maxWait: 60000
+      timeBetweenEvictionRunsMillis: 60000
+      validationQuery: SELECT 1
+      testWhileIdle: true
+      testOnBorrow: false
+      filters: stat,wall # 启用监控统计
+
+  jpa:
+    hibernate:
+      ddl-auto: validate  # 自动创建表结构
+    show-sql: true     # 显示 SQL 语句
+    properties:
+      hibernate.dialect: org.hibernate.dialect.MySQL8Dialect
+
+
+mybatis:
+  #  mapper??????? (????? resources ?????)
+  mapper-locations: classpath:/mapper/*.xml
+  #  ????????
+  type-aliases-package: com.Atri.entity
+  configuration:
+    map-underscore-to-camel-case: true
+
+
+atri:
+  jwt:
+    user-secret-key: student
+    user-ttl: 7200000
+    user-token-name: token
+
+
+
